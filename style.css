@@ -65,6 +65,17 @@ div {
     border-radius: 50px;
     border: white 5px solid;
     font-size: 130%;
+    display: inline-block;
+    margin-right: 50px;
+}
+
+#puntos {
+    background: linear-gradient(orange, darkorange);
+    padding: 20px;
+    border-radius: 50px;
+    border: white 5px solid;
+    font-size: 130%;
+    display: inline-block;
 }
 
 @keyframes iniciar {

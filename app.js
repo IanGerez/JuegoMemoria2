@@ -1,5 +1,7 @@
+let puntos;
+let cantidadTarjetas = 24;
 let iconos = []
-        let selecciones = []
+let selecciones = []
 
         generarTablero()
 
@@ -21,11 +23,13 @@ let iconos = []
         }
 
         function generarTablero() {
+            puntos = 0
+            document.getElementById("puntos").innerHTML = "Puntos: " + puntos
             cargarIconos()
             selecciones = []
             let tablero = document.getElementById("tablero")
             let tarjetas = []
-            for (let i = 0; i < 24; i++) {
+            for (let i = 0; i < cantidadTarjetas; i++) {
                 tarjetas.push(`
                 <div class="area-tarjeta" onclick="seleccionarTarjeta(${i})">
                     <div class="tarjeta" id="tarjeta${i}">
@@ -70,6 +74,25 @@ let iconos = []
                 }else{
                     trasera1.style.background = "plum"
                     trasera2.style.background = "plum"
+                    puntos++;
+                    document.getElementById("puntos").innerHTML = "Puntos: " + puntos
+                }
+                if (verificarFin()) {
+                    swal.fire({
+                        title: `El juego ha finalizado`,
+                        text: `¡Felicitaciones!`,
+                        icon: `success`,
+                    })
                 }
             }, 1000);
+        }
+
+        function verificarFin() {
+           for (let i = 0; i < cantidadTarjetas; i++) {
+                let trasera = document.getElementById("trasera" + i)
+                if (trasera.style.background != "plum") {
+                    return false
+                }
+            }
+            return true
         }
