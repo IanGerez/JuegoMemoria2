@@ -69,6 +69,16 @@ div {
     margin-right: 50px;
 }
 
+.boton {
+    cursor: pointer;
+    background: linear-gradient(orange, darkorange);
+    padding: 20px;
+    border-radius: 20px;
+    border: white 5px solid;
+    font-size: 130%;
+    
+}
+
 #puntos {
     background: linear-gradient(orange, darkorange);
     padding: 20px;

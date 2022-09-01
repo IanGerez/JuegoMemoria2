@@ -96,3 +96,36 @@ let selecciones = []
             }
             return true
         }
+
+const pokemonContainer = document.querySelector('#pokemon')
+const botonAnterior = document.querySelector('#botonAnterior')
+const botonSiguiente = document.querySelector('#botonSiguiente')
+
+const pedirPokemon = (pokemonId) => {
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+    .then((resp) => resp.json())
+    .then((pokemon) => {
+        console.log(pokemon)
+        pokemonContainer.innerHTML = `
+            <h2>Mirate unos pokemones mientras jugas</h2>
+            <h2>${pokemon.name}</h2>
+            <img src=${pokemon.sprites.front_default} alt=${pokemon.name}/>
+        `
+    })
+}
+
+let id = 1
+
+botonSiguiente.addEventListener('click', () => {
+    id++
+    pedirPokemon(id)
+})
+
+botonAnterior.addEventListener('click', () => {
+    id--
+    pedirPokemon(id)
+})
+
+
+pedirPokemon(id)
